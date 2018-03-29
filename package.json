@@ -1,0 +1,25 @@
+{
+  "name": "calculator",
+  "version": "8.11.0",
+  "description": "simple calculator",
+  "main": "index.js",
+  "scripts": {
+    "dist": "browserify src/calc-and-spell.js -o dist/calc-and-spell.js",
+    "test": "mocha test"
+  },
+  "keywords": [
+    "calc",
+    "calculator",
+    "simple",
+    "web",
+    "ui"
+  ],
+  "author": "Risky Satria <riskysatria666@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^16.1.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.5"
+  },
+  "dependencies": {}
+}

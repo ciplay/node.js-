@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kalkulator</title>
+		<link rel="stylesheet" type="text/css" href="style/main.css">
+	</head>
+	<body>
+		
+		<div class="kalkulator">
+			<h2 class="judul">KALKULATOR</h2>
+			<a class="brand">Risky Satria</a>
+			<input type="text" id="bil1" name="bil1" class="bil" autocomplete="off" placeholder="Masukkan Bilangan Pertama" />
+			<input type="hidden" id="hidbil1" name="bil1" class="bil" autocomplete="off" />
+			<input type="text" id="bil2" name="bil2" class="bil" autocomplete="off" placeholder="Masukkan Bilangan Kedua" />
+			<input type="hidden" id="hidbil2" name="bil2" class="bil" autocomplete="off" />
+			<select id="opt" class="opt" name="operasi">
+				<option value="add">Ditambah</option>
+				<option value="subtract">Dikurang</option>
+				<option value="multiply">Dikali</option>
+				<option value="divide">Dibagi</option>
+			</select>
+			<input id="calc" type="button" name="hitung" value="Hitung" class="tombol" />
+			<input id="result" type="text" value="0" class="bil" />
+			<input id="reset" type="button" name="reset" value="Reset" class="tombol" />
+		</div>
+		<script type="text/javascript" src="dist/jquery.min.js"></script>
+		<script type="text/javascript" src="dist/calc-and-spell.js"></script>
+		<script type="text/javascript">
+			var calcAndSpell = new CalcAndSpell();
+			
+			$('#bil1').change(function onChange() {
+				$('#hidbil1').val($(this).val());
+				$(this).val(calcAndSpell.spellTheNumber($(this).val()));
+			});
+
+			$('#bil2').change(function onChange() {
+				$('#hidbil2').val($(this).val());
+				$(this).val(calcAndSpell.spellTheNumber($(this).val()));
+			});
+
+			$('#calc').click(function onClick() {
+				calcAndSpell = new CalcAndSpell();
+				
+				var x = Number($('#hidbil1').val());
+				var y = Number($('#hidbil2').val());
+				
+				calcAndSpell.add(x);
+				calcAndSpell[$('#opt').val()](y);
+
+				$('#result').val('Adalah: ' + calcAndSpell.spellTheNumber(calcAndSpell.result()));
+			});
+
+			$('#reset').click(function onClick() {
+				$('input[type="text"]').val('');
+			});
+		</script>
+	</body>
+</html>
